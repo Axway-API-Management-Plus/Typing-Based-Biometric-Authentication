@@ -1,5 +1,5 @@
 # Typing Based Biometric Authentication
-A sample API and test suite to test out TypingDNA's REST APIs for typing based biometric authentication.
+A sample API and test suite to test out TypingDNA's REST APIs for typing based biometric authentication with the Axway API Management Suite.
 
 ## Descrpition
 The TypingDNA (https://api.typingdna.com) team has a very neat suite that supports 2FA (two factor authentication) by enabling biometric authentication based on keyboard typing patterns. Included in this are tools such as:

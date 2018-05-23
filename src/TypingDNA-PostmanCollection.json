@@ -1,0 +1,228 @@
+{
+	"info": {
+		"name": "Axway APIM - TypingDNA Authentication",
+		"_postman_id": "5994fcbf-9d4b-2eac-c20c-139ce4e9378c",
+		"description": "Typing Biometrics Authentication API provided by TypingDNA.\n\nRecognize people by the way they type. We enable you to identify a person by the way they type on their keyboards. By this, you have a strong security layer that enforces existing username+password, credit card payment and any text use cases. \n\nFor more info, visit typingdna.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://api-env.demo.axway.com:8065/typingdna/user/:id",
+					"protocol": "https",
+					"host": [
+						"api-env",
+						"demo",
+						"axway",
+						"com"
+					],
+					"port": "8065",
+					"path": [
+						"typingdna",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "To check if a user exists and get the number of saved typing patterns you can call `/user/:id` with `GET` method. We recommend to save at least 2 typing patterns per user (170+ chars) in order to perform accurate authentications.\n\n**Parameters**\n* id - String - A string of your choice that identifies the user. Minimum length is 6 characters.\n\nMore info https://api.typingdna.com/index.html#api-API_Services-GetUser"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "device",
+							"value": "ALL",
+							"description": "A string that identifies the device ['all','desktop','mobile']. The default value is 'all'.",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-env.demo.axway.com:8065/typingdna/user/:id",
+					"protocol": "https",
+					"host": [
+						"api-env",
+						"demo",
+						"axway",
+						"com"
+					],
+					"port": "8065",
+					"path": [
+						"typingdna",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "To delete a user and his saved typing patterns you can call `/user/:id` with `DELETE` method.\r\n\r\n**Parameters**\r\n* id  - String - A string of your choice that identifies the user. Minimum length is 6 characters.\r\n\r\n* device - String - A string that identifies the device ['all','desktop','mobile']. The default value is 'all'.\r\n\r\n**Repsonse**\r\nmessage - String - Status message, typically Done.\r\n\r\n* succes - Number - Return 1 for success and 0 for failure.\r\n\r\n* count - Number - User's desktop typing patterns count, recorded on a desktop device.\r\n\r\n* mobilecount - Number - User's mobile typing patterns count, recorded on a mobile device.\r\n\r\n* status - String - Http status code\r\n\r\nMore info https://api.typingdna.com/index.html#api-API_Services-DeleteUser"
+			},
+			"response": []
+		},
+		{
+			"name": "Save typing pattern",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tp",
+							"value": "",
+							"description": "A typing pattern recorded with the TypingDNA JavaScript class",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-env.demo.axway.com:8065/typingdna/save/:id",
+					"protocol": "https",
+					"host": [
+						"api-env",
+						"demo",
+						"axway",
+						"com"
+					],
+					"port": "8065",
+					"path": [
+						"typingdna",
+						"save",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "To save/enroll a new user and/or a new typing pattern you have to make the `/save` request.\n\n**Parameter**\n* id - String - A String of your choice that identifies the user. Minimum length is 6 characters.\n* tp - String - A typing pattern recorded with the `TypingDNA` JavaScript class.\n\nMore info https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify typing pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tp",
+							"value": "",
+							"description": "A typing pattern recorded with the TypingDNA JavaScript class",
+							"type": "text"
+						},
+						{
+							"key": "quality",
+							"value": "2",
+							"description": "An Integer: 1, 2 or 3 default: 2, recommended: 2.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-env.demo.axway.com:8065/typingdna/verify/:id",
+					"protocol": "https",
+					"host": [
+						"api-env",
+						"demo",
+						"axway",
+						"com"
+					],
+					"port": "8065",
+					"path": [
+						"typingdna",
+						"verify",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "To authenticate a user you need to record a new typing pattern, then you have to make the `/verify` request.\n\n**Parameter**\n* id - String - A string of your choice that identifies the user. Minimum length is 6 characters.\n\n* tp - String - A typing pattern recorded with the `TypingDNA` JavaScript class.\n\n* quality - Integer - An Integer: 1, 2 or 3 default: 2, recommended: 2.\n\nMore info https://api.typingdna.com/index.html#api-API_Services-verifyTypingPattern"
+			},
+			"response": []
+		},
+		{
+			"name": "Match typing pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tp1",
+							"value": "",
+							"description": "A new typing pattern recorded with the TypingDNA JavaScript class.",
+							"type": "text"
+						},
+						{
+							"key": "tp2",
+							"value": "",
+							"description": "An old typing pattern recorded with the TypingDNA JavaScript class. Multiple old typing patterns should be separated by ;.",
+							"type": "text"
+						},
+						{
+							"key": "quality",
+							"value": "",
+							"description": "An Integer: 1, 2 or 3 default: 2, recommended: 2.",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api-env.demo.axway.com:8065/typingdna/match",
+					"protocol": "https",
+					"host": [
+						"api-env",
+						"demo",
+						"axway",
+						"com"
+					],
+					"port": "8065",
+					"path": [
+						"typingdna",
+						"match"
+					]
+				},
+				"description": "If you want you can save your typing patterns yourself, so that you only use the `/match` request, which is the bread and butter of TypingDNA. In this case you don’t have to provide any user id, you only have to send us two or more typing patterns and we will respond with a result (similar to a verify request, but you don’t store the data with us at all).\n\n**Parameter**\n* tp1 - String - A new typing pattern recorded with the `TypingDNA` JavaScript class.\n\n* tp2 - String - An old typing pattern recorded with the `TypingDNA` JavaScript class. Multiple old typing patterns should be separated by `;`.\n\n* quality - Integer - An Integer: 1, 2 or 3 default: 2, recommended: 2.\n\nMore info https://api.typingdna.com/index.html#api-Optional-matchTypingPattern"
+			},
+			"response": []
+		}
+	]
+}

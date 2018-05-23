@@ -1,0 +1,165 @@
+{
+  "id" : "8fc562c1-8396-4a6a-b975-ee4ccbca9d92",
+  "description" : "",
+  "apiVersion" : "1.0",
+  "swaggerVersion" : "1.1",
+  "basePath" : "https://api.typingdna.com",
+  "resourcePath" : "/",
+  "models" : { },
+  "consumes" : [ ],
+  "produces" : [ ],
+  "name" : "TypingDNA",
+  "summary" : "Keyboard typing based behavioral authentication.",
+  "cors" : false,
+  "expired" : false,
+  "deprecated" : false,
+  "retirementDate" : 0,
+  "tags" : { },
+  "apis" : [ {
+    "path" : "/verify/{id}",
+    "operations" : [ {
+      "id" : "f92b8b63-1b1b-4973-b12b-93c63ea1eaf5",
+      "httpMethod" : "POST",
+      "nickname" : "Verify Typing Pattern",
+      "summary" : "To​ ​authenticate​ ​a​ ​user​ ​you​ ​need​ ​to​ ​record​ ​a​ ​new​ typing pattern,​ ​then​ ​you​ ​have​ ​to​ ​make​ ​the​ ​/​verify request.",
+      "notes" : "",
+      "responseClass" : "void",
+      "errorResponses" : [ ],
+      "consumes" : [ ],
+      "produces" : [ ],
+      "tags" : { },
+      "cors" : false,
+      "parameters" : [ {
+        "description" : "",
+        "required" : true,
+        "name" : "id",
+        "dataType" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      }, {
+        "description" : "A typing pattern recorded with the TypingDNA JavaScript class.",
+        "required" : true,
+        "name" : "tp",
+        "dataType" : "string",
+        "paramType" : "form",
+        "allowMultiple" : true
+      }, {
+        "description" : "An Integer: 1, 2 or 3 default: 2, recommended: 2.",
+        "required" : true,
+        "name" : "quality",
+        "dataType" : "int",
+        "paramType" : "form",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/user/{id}",
+    "operations" : [ {
+      "id" : "7fd846bd-7110-4dc2-813b-4432c1fc3653",
+      "httpMethod" : "DELETE",
+      "nickname" : "Delete User",
+      "summary" : "To delete a user and his saved typing patterns you can call /user/:id with DELETE method.",
+      "notes" : "",
+      "responseClass" : "void",
+      "errorResponses" : [ ],
+      "consumes" : [ ],
+      "produces" : [ "application/json" ],
+      "tags" : { },
+      "cors" : false,
+      "parameters" : [ {
+        "description" : "(optional) One of the following options [0, 1, 2, all], 0 for anytext pattern, 1 for sametext pattern and 2 for extended pattern (default: “all”)",
+        "required" : false,
+        "name" : "type",
+        "dataType" : "string",
+        "paramType" : "form",
+        "allowMultiple" : false
+      }, {
+        "description" : "(optional) You may provide textid​ (if the user has multiple ones)",
+        "required" : false,
+        "name" : "textid",
+        "dataType" : "string",
+        "paramType" : "form",
+        "allowMultiple" : false
+      }, {
+        "description" : "A string that identifies the device ['all','desktop','mobile']. The default value is 'all'.",
+        "required" : false,
+        "name" : "device",
+        "dataType" : "string",
+        "paramType" : "form",
+        "allowMultiple" : false
+      }, {
+        "description" : "A string of your choice that identifies the user. Minimum length is 6 characters.",
+        "required" : true,
+        "name" : "id",
+        "dataType" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      } ]
+    }, {
+      "id" : "7a43b211-78cb-4bfc-80ea-7e5a3b2e8ce1",
+      "httpMethod" : "GET",
+      "nickname" : "Check User",
+      "summary" : "To check if a user exists and get the number of saved typing patterns you can call /user/:id with GET method. We recommend saving at least 2 typing patterns per user in order to perform accurate authentications.",
+      "notes" : "",
+      "responseClass" : "void",
+      "errorResponses" : [ ],
+      "consumes" : [ ],
+      "produces" : [ "application/json" ],
+      "tags" : { },
+      "cors" : false,
+      "parameters" : [ {
+        "description" : "(optional) You may provide textid​ (if the user has multiple ones).",
+        "required" : false,
+        "name" : "type",
+        "dataType" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "description" : "One of the following options [0, 1, 2, all], 0 for anytext pattern, 1 for sametext pattern and 2 for extended pattern (default: “all”).",
+        "required" : false,
+        "name" : "textid",
+        "dataType" : "string",
+        "paramType" : "query",
+        "allowMultiple" : false
+      }, {
+        "description" : "A string of your choice that identifies the user. Minimum length is 6 characters.",
+        "required" : true,
+        "name" : "id",
+        "dataType" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      } ]
+    } ]
+  }, {
+    "path" : "/save/{id}",
+    "operations" : [ {
+      "id" : "2bfbd056-c98f-44be-b502-e28ef64d9af4",
+      "httpMethod" : "POST",
+      "nickname" : "Save Typing Pattern",
+      "summary" : "To save/enroll a new user and/or a new typing pattern you have to make the /save request. We recommend to save at least 2 typing patterns per user in order to perform accurate authentications.",
+      "notes" : "",
+      "responseClass" : "void",
+      "errorResponses" : [ ],
+      "consumes" : [ ],
+      "produces" : [ "application/json" ],
+      "tags" : { },
+      "cors" : false,
+      "parameters" : [ {
+        "description" : "A String of your choice that identifies the user. Minimum length is 6 characters.",
+        "required" : true,
+        "name" : "id",
+        "dataType" : "string",
+        "paramType" : "path",
+        "allowMultiple" : false
+      }, {
+        "description" : "A typing pattern recorded with the TypingDNA JavaScript class.",
+        "required" : true,
+        "name" : "tp",
+        "dataType" : "string",
+        "paramType" : "form",
+        "allowMultiple" : true
+      } ]
+    } ]
+  } ],
+  "type" : "rest"
+}
